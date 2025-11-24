@@ -155,7 +155,7 @@ This project demonstrates understanding of:
 
 MIT License
 
-Copyright (c) 2024 [Your Name]
+Copyright (c) 2024 Ram Prashanth Rao G
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -167,7 +167,7 @@ copies of the Software.
 
 ## 👤 Author
 
-**[Your Name]**
+**Ram Prashanth Rao G**
 - Course: INFO 7390 - Art and Science of Data
 - Term: Fall 2024
 - Topic: Controllable Text Generation Techniques
