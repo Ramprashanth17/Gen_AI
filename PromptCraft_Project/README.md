@@ -169,7 +169,7 @@ copies of the Software.
 
 **Ram Prashanth Rao G**
 - Course: INFO 7390 - Art and Science of Data
-- Term: Fall 2024
+- Term: Fall 2025
 - Topic: Controllable Text Generation Techniques
 
 ---
