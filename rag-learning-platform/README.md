@@ -74,7 +74,7 @@ jupyter notebook notebooks/DEMO_full_rag_system.ipynb
 
 Start here and progress through the tutorials sequentially:
 
-### 1️⃣ [Embeddings Fundamentals](notebooks/01_embeddings_fundamentals.ipynb)
+### 1️⃣ [Embeddings Fundamentals](rag-learning-platform/notebooks/1_Embeddings_Fundamentals.ipynb)
 **Time:** 40-50 minutes | **Level:** Beginner
 
 Learn how text becomes numbers and why it matters for semantic search.
