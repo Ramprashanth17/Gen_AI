@@ -17,14 +17,6 @@ As Large Language Models become integral to workflows across industries, the qua
 3. **Interactive Visualization**: Dashboards showing prompt quality breakdown
 4. **Educational Content**: Explains *why* certain techniques work
 
----
-
-## 🎬 Video Demo
-
-[📺 Watch the Demo Video](YOUR_VIDEO_LINK_HERE)
-
----
-
 ## 🗂️ Project Structure
 
 ```
