@@ -2,7 +2,7 @@
 
 [![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Made with Jupyter](https://img.shields.io/badge/Made%20with-Jupyter-orange?logo=Jupyter)](https://jupyter.org/)
+![Google Colab](https://img.shields.io/badge/Google%20Colab-%23F9A825.svg?style=for-the-badge&logo=googlecolab&logoColor=white)
 
 **An interactive learning platform for mastering Retrieval-Augmented Generation (RAG) systems from first principles to production deployment.**
 
@@ -22,25 +22,6 @@ This project is a **comprehensive educational platform** that teaches you how to
 - 🎥 **Video Walkthrough** - 10-minute show-and-tell demonstration
 - 💼 **Production-Ready** - Industry-standard techniques (recursive splitting, metadata handling)
 - 🚀 **Complete Demo** - Working RAG system with research papers in minutes
-
----
-
-## 🎬 See It In Action
-
-**📹 Watch the 10-Minute Demo:** [YouTube Link - Coming Soon]
-
-Quick preview of what you'll build:
-```
-User Question: "What is the transformer architecture?"
-    ↓
-RAG System: Searches 3 research papers
-    ↓
-Retrieved: Vaswani et al. (2017) - "Attention is All You Need", Section 3.1
-    ↓
-Answer: "The transformer uses self-attention mechanisms to process 
-         sequences in parallel... [Vaswani et al., 2017]"
-    ✓ Accurate ✓ Cited ✓ Verifiable
-```
 
 ---
 
@@ -99,7 +80,7 @@ Start here and progress through the tutorials sequentially:
 Learn how text becomes numbers and why it matters for semantic search.
 
 **What you'll learn:**
-- What are embeddings and how do they capture meaning?
+- What are embeddings, and how do they capture meaning?
 - Vector similarity and cosine distance
 - Visualizing embeddings in 2D/3D space
 - Why "dog" and "puppy" have similar vectors
@@ -129,7 +110,7 @@ Master document preprocessing strategies for RAG systems.
 Build searchable vector databases for semantic retrieval.
 
 **What you'll learn:**
-- What are vector databases and why RAG needs them?
+- What are vector databases, and why does RAG need them?
 - ChromaDB setup and operations
 - Storing embeddings with metadata
 - Advanced querying with filters
@@ -246,15 +227,6 @@ rag-learning-platform/
 │   ├── 04_rag_pipeline_complete.ipynb
 │   └── DEMO_full_rag_system.ipynb
 │
-├── src/                    # Reusable code (optional)
-│   ├── embeddings.py
-│   ├── chunker.py
-│   ├── vector_store.py
-│   └── rag_pipeline.py
-│
-├── demo_data/             # Sample datasets
-│   └── README.md          # Data download instructions
-│
 ├── requirements.txt       # Python dependencies
 ├── LICENSE               # MIT License
 └── README.md            # This file
@@ -330,27 +302,12 @@ collection.add(documents=documents, embeddings=embeddings, ids=[...])
 # 4. Query
 results = collection.query(query_texts=["Your question?"], n_results=3)
 
-# 5. Generate answer with LLM + context
+# 5. Generate an answer with LLM + context
 # (See Tutorial 04 for complete implementation)
 ```
 
 **Full pipeline in < 20 lines of code!**
 
----
-
-## 🎥 Demo Video
-
-**Watch the complete walkthrough:** [YouTube Link - Coming Soon]
-
-**Video Contents:**
-- 🎯 What is RAG and why does it matter? (3 min)
-- 🔨 Live system demonstration with research papers (5 min)
-- 🧪 Try it yourself - Getting started guide (2 min)
-
-**Runtime:** 10 minutes  
-**Shows:** Complete system from document upload to cited answers
-
----
 
 ## 🤝 Contributing
 
