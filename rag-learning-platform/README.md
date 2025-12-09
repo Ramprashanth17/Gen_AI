@@ -42,7 +42,7 @@ cd Gen_AI/rag-learning-platform
 # Install dependencies
 pip install -r requirements.txt
 
-# Set up API key (get free key from https://ai.google.dev/)
+# Set up API key (get the free key from https://ai.google.dev/)
 # Option 1: Environment variable
 export GEMINI_API_KEY='your-api-key-here'
 
@@ -89,7 +89,7 @@ Learn how text becomes numbers and why it matters for semantic search.
 
 ---
 
-### 2️⃣ [Chunking & Tokenization](notebooks/02_chunking_and_tokenization.ipynb)
+### 2️⃣ [Chunking & Tokenization](notebooks/2_Chunking_and_Tokenization.ipynb)
 **Time:** 40-50 minutes | **Level:** Intermediate
 
 Master document preprocessing strategies for RAG systems.
@@ -104,7 +104,7 @@ Master document preprocessing strategies for RAG systems.
 
 ---
 
-### 3️⃣ [Vector Storage with ChromaDB](notebooks/03_vector_storage_chromadb.ipynb)
+### 3️⃣ [Vector Storage with ChromaDB](notebooks/3_Vector_Storage_Chromadb.ipynb)
 **Time:** 40-50 minutes | **Level:** Intermediate
 
 Build searchable vector databases for semantic retrieval.
@@ -119,7 +119,7 @@ Build searchable vector databases for semantic retrieval.
 
 ---
 
-### 4️⃣ [Complete RAG Pipeline](notebooks/04_rag_pipeline_complete.ipynb)
+### 4️⃣ [Complete RAG Pipeline](notebooks/4_RAG_Pipeline_Complete.ipynb)
 **Time:** 50-60 minutes | **Level:** Advanced
 
 Connect all components into a production-ready RAG system.
@@ -134,7 +134,7 @@ Connect all components into a production-ready RAG system.
 
 ---
 
-### 🎯 [DEMO: Full System](notebooks/DEMO_full_rag_system.ipynb)
+### 🎯 [DEMO: Full System](notebooks/Demo_RAG_Pipeline_ResearchPapers.ipynb)
 **Time:** 10 minutes | **Level:** All levels
 
 See everything working together in a streamlined demo.
