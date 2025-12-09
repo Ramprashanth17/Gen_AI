@@ -1,0 +1,24 @@
+# API Keys
+.env
+*.env
+**/*_API_KEY*
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.ipynb_checkpoints/
+
+# Data (large files)
+*.pdf
+*.db
+chroma_db/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+
+# OS
+.DS_Store
+Thumbs.db
