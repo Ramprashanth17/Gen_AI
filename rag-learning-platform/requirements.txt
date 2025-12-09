@@ -1,0 +1,9 @@
+chromadb
+sentence-transformers
+google-generativeai
+tiktoken
+matplotlib
+pandas
+numpy
+jupyter
+ipykernel
