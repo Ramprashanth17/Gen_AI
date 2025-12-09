@@ -526,7 +526,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 **This project is my contribution to making RAG accessible** - breaking down a complex system into understandable pieces that anyone can learn and build.
 
-**Start your journey:** [Tutorial 01: Embeddings Fundamentals](notebooks/01_embeddings_fundamentals.ipynb)
+**Start your journey:** [Tutorial 01: Embeddings Fundamentals](notebooks/1_Embeddings_Fundamentals.ipynb)
 
 ---
 
