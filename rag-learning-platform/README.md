@@ -3,6 +3,7 @@
 [![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 ![Google Colab](https://img.shields.io/badge/Google%20Colab-%23F9A825.svg?style=for-the-badge&logo=googlecolab&logoColor=white)
+[![AI Assisted](https://img.shields.io/badge/AI%20Assisted-Claude%20by%20Anthropic-orange)](#)
 
 **An interactive learning platform for mastering Retrieval-Augmented Generation (RAG) systems from first principles to production deployment.**
 
