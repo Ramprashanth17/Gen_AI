@@ -68,7 +68,21 @@ jupyter notebook notebooks/DEMO_full_rag_system.ipynb
 # Runtime: ~10 minutes
 # Result: Working RAG system answering questions about research papers!
 ```
+---
 
+## 🎥 Demo Video
+
+**Watch the complete walkthrough:** Demo[https://vimeo.com/1145048963?share=copy&fl=sv&fe=ci#t=0]
+
+**Video Contents:**
+- 🎯 What is RAG and why does it matter? (3 min)
+- 🔨 Live system demonstration with research papers (5 min)
+- 🧪 Try it yourself - Getting started guide (2 min)
+
+**Runtime:** 10 minutes  
+**Shows:** Complete system from document upload to cited answers
+
+---
 ---
 
 ## 📚 Learning Path
