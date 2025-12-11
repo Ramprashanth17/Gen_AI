@@ -1,0 +1,25 @@
+# API Development Standards
+
+## Design Principles
+RESTful conventions required for all new APIs. Use HTTP methods correctly (GET, POST, PUT, DELETE). Plural nouns for resources (users, not user). Version all APIs in URL path (v1, v2). Maintain backward compatibility within major versions.
+
+## Authentication and Authorization
+OAuth 2.0 standard for all external APIs. JWT tokens with 1-hour expiration. Refresh tokens valid for 30 days. API keys for internal service-to-service communication. Rate limiting: 100 requests per minute per user.
+
+## Request and Response Format
+Accept and return JSON by default. Support content negotiation via Accept header. Use consistent field naming (snake_case). Include metadata in responses (pagination, timestamps). Compress responses with gzip.
+
+## Error Handling
+Use standard HTTP status codes correctly. Include error code and human-readable message. Provide correlation ID for debugging. Never expose stack traces in production. Log all errors with context.
+
+## Documentation
+OpenAPI 3.0 specification required. Include examples for all endpoints. Document rate limits and quotas. Provide SDK code samples in multiple languages. Keep documentation in sync with implementation.
+
+## Performance and Scalability
+Response time SLA: 95th percentile under 200ms. Implement caching where appropriate. Use pagination for collections (default 20, max 100). Async processing for long-running operations. Database query optimization mandatory.
+
+## Versioning and Deprecation
+Maintain previous version for minimum 6 months. Announce deprecation at least 90 days in advance. Provide migration guide for breaking changes. Monitor usage of deprecated endpoints. Sunset process includes customer notification.
+
+## Testing Requirements
+Minimum 80% code coverage for unit tests. Integration tests for all endpoints. Load testing before production deployment. Contract testing for microservices. Security scanning in CI/CD pipeline.

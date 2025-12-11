@@ -1,0 +1,22 @@
+# Information Security Guidelines
+
+## Password Policy
+Minimum 12 characters combining uppercase, lowercase, numbers, and special characters. Cannot reuse last 5 passwords. Must change every 90 days. Account locks after 5 failed login attempts. Multi-factor authentication required for all systems.
+
+## Data Classification
+Public: No restrictions on distribution. Internal: Company employees only. Confidential: Need-to-know basis with manager approval. Restricted: Executive approval required, legal review needed.
+
+## Access Control
+Principle of least privilege enforced. Role-based access control implemented across all systems. Access reviews conducted quarterly. Terminated employee access revoked within 1 hour.
+
+## Email and Communication
+Do not open suspicious attachments. Verify sender before clicking links. Use encrypted email for confidential information. BCC external recipients when sending to groups. Report phishing attempts to security team.
+
+## Device Security
+Enable full disk encryption on all devices. Install security updates within 48 hours. Use company-approved antivirus software. Never leave devices unattended in public. Report lost or stolen devices immediately.
+
+## Incident Response
+Report security incidents within 1 hour of discovery. Do not attempt to investigate on your own. Preserve evidence by not touching affected systems. Follow incident response team instructions. Complete incident report within 24 hours.
+
+## Compliance Requirements
+Complete annual security training by deadline. Acknowledge security policy updates within 5 days. Report policy violations without fear of retaliation. Understand that violations may result in termination.
