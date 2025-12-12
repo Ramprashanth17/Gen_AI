@@ -12,7 +12,15 @@ class VectorStore:
         try:
             return self.client.get_collection(name)
         except:
-            return self.client.create_collection(name, metadata=metadata or {})
+            # Provide default metadata if None
+            default_metadata = {
+                "description": "SAP knowledge base",
+                "created": "auto"
+            }
+            return self.client.create_collection(
+                name, 
+                metadata=metadata if metadata else default_metadata
+            )
     
     def add_documents(self, collection_name, documents, embeddings, metadatas):
         """Add documents to collection"""
