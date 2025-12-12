@@ -50,4 +50,10 @@ if st.button("Search", type="primary"):
     if question:
         with st.spinner("Searching..."):
             result = pipeline.query(question)
-            st.write(result['answer'])
+            
+            st.markdown("### 📝 Answer")
+            st.success(result['answer'])
+            
+            st.markdown("### 📚 Sources")
+            for s in result['sources']:
+                st.caption(f"📄 {s['source']} (Similarity: {s['similarity']:.0%})")
