@@ -1,7 +1,15 @@
 import streamlit as st
+from pathlib import Path
+import os
+import sys
+
+# Get the directory where app.py is located
+APP_DIR = Path(__file__).parent
+os.chdir(APP_DIR)  # Change to app directory
+sys.path.insert(0, str(APP_DIR))
+
 from src.rag_pipeline import RAGPipeline
 from dotenv import load_dotenv
-import os
 
 load_dotenv()
 
@@ -13,40 +21,22 @@ def get_pipeline():
     
     try:
         collection = pipeline.vector_store.client.get_collection("sap_knowledge")
-        chunk_count = collection.count()
-        if chunk_count > 0:
-            st.success(f"✅ Loaded existing database: {chunk_count} chunks")
+        if collection.count() > 0:
             return pipeline
     except:
         pass
     
-    # Need to index
-    with st.spinner("🔄 First run - indexing documents (30 sec)..."):
-        try:
-            # Add detailed logging
-            from src.document_loader import load_all_documents
-            docs = load_all_documents("data/documents")
-            st.info(f"📄 Loaded {len(docs)} documents")
-            
-            if len(docs) == 0:
-                st.error("❌ No documents found in data/documents!")
-                st.stop()
-            
-            count = pipeline.index_documents("data/documents")
-            st.success(f"✅ Indexed {count} chunks!")
-        except Exception as e:
-            st.error(f"❌ Indexing failed: {str(e)}")
-            import traceback
-            st.code(traceback.format_exc())
-            st.stop()
-    
+    # Index documents
+    st.info("🔄 Indexing documents...")
+    pipeline.index_documents("data/documents")
     return pipeline
 
 st.title("🧠 Enterprise Knowledge Navigator")
+st.markdown("---")
 
 pipeline = get_pipeline()
 
-question = st.text_input("💬 Ask:", placeholder="What is SAP's AI policy?")
+question = st.text_input("💬 Ask a question:", placeholder="What is SAP's AI policy?")
 
 if st.button("🔍 Search", type="primary"):
     if question:
