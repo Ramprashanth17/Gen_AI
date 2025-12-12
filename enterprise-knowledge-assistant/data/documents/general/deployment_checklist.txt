@@ -1,0 +1,24 @@
+# Production Deployment Checklist
+
+## Pre-Deployment
+All automated tests passing (unit, integration, E2E). Code review completed and approved by two reviewers. Security scan completed with no critical issues. Performance testing shows no degradation. Documentation updated including API changes and runbooks.
+
+Database migrations tested in staging environment. Rollback plan documented and reviewed. Dependencies updated and vulnerability scan clear. Environment variables verified in all environments. Feature flags configured correctly.
+
+## Deployment Window
+Maintenance window scheduled and communicated. Status page updated to "maintenance mode". Monitoring alerts adjusted for deployment. On-call engineer identified and available. Stakeholders notified of deployment start.
+
+## Deployment Steps
+Create release branch from main. Tag release with semantic version. Deploy to staging and verify. Run smoke tests on staging. Get final approval from product owner.
+
+Deploy to production using blue-green strategy. Monitor error rates for first 15 minutes. Verify critical user flows. Check database performance metrics. Confirm third-party integrations working.
+
+## Post-Deployment
+Run full smoke test suite. Verify monitoring and alerting functional. Check log aggregation for errors. Confirm backup jobs running. Update documentation with changes.
+
+Send deployment notification to team. Monitor error rates for 2 hours. Schedule post-mortem if issues occurred. Document lessons learned. Close deployment ticket.
+
+## Rollback Criteria
+Error rate exceeds 1% for 5 minutes. Critical feature completely broken. Data corruption detected. Security vulnerability discovered. Performance degradation over 50%.
+
+Execute rollback within 10 minutes of decision. Notify all stakeholders immediately. Investigate root cause after rollback. Schedule fix deployment. Update incident report.

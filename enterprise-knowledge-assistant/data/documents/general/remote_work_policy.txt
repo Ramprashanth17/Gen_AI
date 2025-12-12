@@ -1,0 +1,27 @@
+# Remote Work Policy
+
+Effective Date: January 1, 2024
+
+## Eligibility
+Employees must complete a 6-month probationary period and receive manager approval. Role must be suitable for remote work with demonstrated ability to work independently.
+
+## Work Schedule
+Standard business hours apply (9 AM - 5 PM local time). Core collaboration hours are 10 AM - 3 PM when all team members must be available. Flexible scheduling available with manager approval.
+
+## Equipment and Technology
+Company provides laptop, monitor, and necessary peripherals. Employees responsible for reliable internet connection (minimum 25 Mbps). VPN required for all work activities. IT support available during business hours.
+
+## Workspace Requirements
+Dedicated workspace free from distractions required. Ergonomic setup recommended to prevent injury. Workspace must meet basic safety standards. Background appropriate for video calls.
+
+## Communication Expectations
+Respond to messages within 2 hours during work hours. Attend all scheduled meetings with camera on. Update Slack status to reflect availability. Weekly check-ins with direct manager mandatory.
+
+## Security and Confidentiality
+Use company VPN for all work activities. Lock computer when away from desk. Never use public WiFi for confidential work. Follow data protection policies strictly. Report security incidents immediately.
+
+## Performance Management
+Same performance standards as office workers. Regular performance reviews conducted. Productivity measured by outcomes, not hours. Right to return to office can be revoked if performance declines.
+
+## Expenses
+Monthly internet stipend: $50. Phone reimbursement: $40 per month. Office supplies available upon request. Co-working space requires pre-approval.

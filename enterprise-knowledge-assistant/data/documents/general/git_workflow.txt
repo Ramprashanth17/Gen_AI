@@ -1,0 +1,22 @@
+# Git Workflow and Best Practices
+
+## Branch Strategy
+main: Production-ready code only, protected branch. develop: Integration branch for features. feature/: New feature development (feature/user-authentication). bugfix/: Bug fixes (bugfix/login-error). hotfix/: Emergency production fixes (hotfix/security-patch).
+
+## Commit Guidelines
+Use present tense imperative mood ("Add feature" not "Added feature"). First line under 50 characters, summary only. Blank line, then detailed explanation if needed. Reference issue numbers (Closes #123, Relates to #456). Sign commits with GPG key.
+
+## Pull Request Process
+Create PR from feature branch to develop. Fill out PR template completely. Request review from at least one team member. Address all review comments. Ensure CI/CD pipeline passes.
+
+Squash commits before merging to keep history clean. Delete feature branch after merge. Update CHANGELOG.md with changes. Tag release if deploying to production.
+
+## Code Review Standards
+Review within 24 hours of request. Check for code quality and best practices. Verify tests cover new functionality. Look for security vulnerabilities
+ls
+ Ensure documentation updated.
+
+Provide constructive feedback with examples. Approve only when confident code is production-ready. Request changes if issues found. Re-review after changes made.
+
+## Merge Strategy
+Squash and merge for feature branches (clean history). Merge commit for release branches (preserve context). Fast-forward merge for hotfixes (quick integration). Never force push to main or develop.
