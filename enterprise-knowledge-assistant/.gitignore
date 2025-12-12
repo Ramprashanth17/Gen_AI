@@ -13,8 +13,6 @@ __pycache__/
 *.env
 # Data
 data/vector_db/
-*.pdf
-*.docx
 # IDE
 .vscode/
 .idea/
