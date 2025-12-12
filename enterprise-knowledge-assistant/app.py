@@ -13,6 +13,16 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
+# At the very top of app.py, add:
+import os
+from pathlib import Path
+
+st.write(f"🔍 DEBUG: Current directory: {os.getcwd()}")
+st.write(f"🔍 DEBUG: Files in current dir: {list(Path('.').glob('*'))[:10]}")
+st.write(f"🔍 DEBUG: data/documents exists? {Path('data/documents').exists()}")
+
+if Path('data/documents').exists():
+    st.write(f"🔍 DEBUG: Files in data/documents: {list(Path('data/documents').rglob('*'))[:10]}")
 st.set_page_config(page_title="Enterprise Knowledge Navigator", page_icon="🧠", layout="wide")
 
 @st.cache_resource
@@ -46,4 +56,5 @@ if st.button("🔍 Search", type="primary"):
             st.write(result['answer'])
             st.markdown("### Sources")
             for s in result['sources']:
+
                 st.caption(f"{s['source']} ({s['similarity']:.0%})")
