@@ -85,8 +85,8 @@ with st.sidebar:
     
     
     # Get the collection name from dropdown selection
-    kb = st.session_state.get('kb_select', DEFAULT_COLLECTION)
-    col_name = COLLECTIONS[kb]["name"]
+    #kb = st.session_state.get('kb_select', DEFAULT_COLLECTION)
+    col_name = COLLECTIONS[knowledge_base]["name"]
 
     try:
         # Query directly by name (no caching issues)
