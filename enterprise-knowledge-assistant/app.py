@@ -9,41 +9,41 @@ sys.path.insert(0, str(APP_DIR))
 
 from src.rag_pipeline import RAGPipeline
 from dotenv import load_dotenv
-from src.config import COLLECTIONS, DEFAULT_COLLECTION  
+from src.config import COLLECTIONS, DEFAULT_COLLECTION
 
 load_dotenv()
 
 st.set_page_config(page_title="Enterprise Knowledge Navigator", page_icon="🧠", layout="wide")
 
+# Initialize session state
+if 'question' not in st.session_state:
+    st.session_state.question = ""
+if 'knowledge_base' not in st.session_state:
+    st.session_state.knowledge_base = DEFAULT_COLLECTION
+
 @st.cache_resource
 def get_pipeline():
     pipeline = RAGPipeline()
     
-    try:
-        sap_col = pipeline.vector_store.client.get_collection("sap_knowledge")
-        if sap_col.count() == 0:
-            raise Exception("Empty")
-    except:
-        st.info("📦 Indexing SAP documents...")
-        pipeline.index_documents("data/documents/sap", "sap_knowledge")
-    
-    try:
-        sf_col = pipeline.vector_store.client.get_collection("salesforce_knowledge")
-        if sf_col.count() == 0:
-            raise Exception("Empty")
-    except:
-        st.info("📦 Indexing Salesforce documents...")
-        pipeline.index_documents("data/documents/salesforce", "salesforce_knowledge")
+    for kb_name, kb_config in COLLECTIONS.items():
+        collection_name = kb_config["name"]
+        folder_path = kb_config["folder"]
+        
+        try:
+            col = pipeline.vector_store.client.get_collection(collection_name)
+            if col.count() == 0:
+                raise Exception("Empty")
+        except:
+            st.info(f"📦 Indexing {kb_name} documents...")
+            pipeline.index_documents(folder_path, collection_name)
     
     return pipeline
+
+pipeline = get_pipeline()
 
 st.title("🧠 Enterprise Knowledge Navigator")
 st.markdown("Multi-tenant RAG for Enterprise Documentation")
 st.markdown("---")
-
-# Initialize session state
-if 'selected_question' not in st.session_state:
-    st.session_state.selected_question = ""
 
 # Sidebar
 with st.sidebar:
@@ -52,68 +52,68 @@ with st.sidebar:
     knowledge_base = st.selectbox(
         "📚 Knowledge Base:",
         list(COLLECTIONS.keys()),
-        index=list(COLLECTIONS.keys()).index(DEFAULT_COLLECTION),
-        key="kb_selector"
+        index=list(COLLECTIONS.keys()).index(st.session_state.knowledge_base),
+        key="kb_select"
     )
     
+    st.session_state.knowledge_base = knowledge_base
     selected_collection = COLLECTIONS[knowledge_base]["name"]
     
     st.markdown("---")
     st.markdown("### 💡 Example Questions")
     
-    if knowledge_base == "SAP":
-        examples = [
+    examples = {
+        "SAP": [
             "What is SAP's policy on accepting gifts?",
             "What are the AI ethics principles at SAP?",
             "Who oversees AI ethics at SAP?"
-        ]
-    else:
-        examples = [
+        ],
+        "Salesforce": [
             "What is Salesforce Apex?",
             "What are SOQL governor limits?",
             "How do you handle DML in loops?"
         ]
+    }
     
-    for i, example in enumerate(examples):
-        if st.button(example, key=f"example_{i}", use_container_width=True):
-            st.session_state.selected_question = example
+    for i, example in enumerate(examples[knowledge_base]):
+        if st.button(example, key=f"ex_{knowledge_base}_{i}", use_container_width=True):
+            st.session_state.question = example
+            st.rerun()
     
     st.markdown("---")
     st.markdown("### 📊 System Info")
     
-    pipeline = get_pipeline()
     try:
         col = pipeline.vector_store.client.get_collection(selected_collection)
         st.metric("Chunks Indexed", col.count())
         
         st.markdown("### 📄 Documents")
-        docs_in_collection = set()
-        results = col.get(limit=1000)
-        for metadata in results['metadatas']:
-            docs_in_collection.add(metadata['source'])
+        docs = set()
+        results = col.get(limit=2000)
+        for meta in results['metadatas']:
+            docs.add(meta['source'])
         
-        for doc in sorted(docs_in_collection):
+        for doc in sorted(docs):
             st.caption(f"📄 {doc}")
     except Exception as e:
-        st.error(f"Error: {str(e)}")
+        st.error(str(e))
 
-# Main interface
-st.markdown(f"### 💬 Ask a question about {knowledge_base}")
+# Main
+st.markdown(f"### 💬 Ask about {knowledge_base}")
 
 question = st.text_input(
     "Your question:",
-    value=st.session_state.selected_question,
-    placeholder=f"e.g., What is {knowledge_base}'s policy on gifts?",
-    key="question_input"
+    value=st.session_state.question,
+    placeholder=f"e.g., What is {knowledge_base}'s policy?",
+    key="q_input"
 )
 
-if st.button("🔍 Search", type="primary"):
+if st.button("🔍 Search", type="primary") or (question and question != st.session_state.get('last_question', '')):
     if question:
-        # Clear the session state AFTER we have the question
-        if st.session_state.selected_question:
-            st.session_state.selected_question = ""
+        st.session_state.last_question = question
+        st.session_state.question = ""  # Clear for next query
         
-        with st.spinner(f"Searching {knowledge_base} knowledge base..."):
+        with st.spinner(f"Searching {knowledge_base}..."):
             result = pipeline.query(question, collection_name=selected_collection, top_k=3)
             
             st.markdown("### 📝 Answer")
@@ -126,4 +126,4 @@ if st.button("🔍 Search", type="primary"):
         st.warning("Please enter a question")
 
 st.markdown("---")
-st.caption(f"Currently searching: **{knowledge_base}** knowledge base")
+st.caption(f"Searching: **{knowledge_base}** knowledge base")
