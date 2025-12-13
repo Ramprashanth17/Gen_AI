@@ -33,17 +33,18 @@ Clone the repository to start exploring:
 git clone [https://github.com/Ramprashanth17/Gen_AI.git](https://github.com/Ramprashanth17/Gen_AI.git)
 cd Gen_AI
 
-
+```
 ## 🤝 Contributing
 
 Contributions are always welcome! If you have a cool GenAI idea, a fix for a bug, or a new example to add:
 
-```markdown
+```
 1. Fork the Project
 2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
 3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
 4. Push to the Branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
+```
 
 ## 🌟 Show Your Support
 
