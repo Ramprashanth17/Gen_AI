@@ -167,21 +167,44 @@ streamlit run app.py
 - **Benefit**: Complete data isolation, independent scaling per knowledge base
 
 ---
+## 📈 Roadmap
 
-## 📈 Future Enhancements
+### Completed
+- ✅ v1.0: Basic RAG with single knowledge base
+- ✅ v2.0: Multi-tenant architecture + evaluation framework
 
-- [ ] Hybrid search (BM25 + semantic) for improved recall
-- [ ] Document upload interface for dynamic knowledge base expansion  
-- [ ] Query analytics dashboard
-- [ ] Additional format support (DOCX, JSON, PPTX)
-- [ ] Web scraping integration for live documentation
-- [ ] Cross-encoder re-ranking for precision optimization
+### Planned (v3.0)
+- [ ] **Dynamic Document Management**
+  - Re-index button for adding new documents
+  - Document upload interface
+  - Auto-detection of new files
+  
+- [ ] **Advanced Retrieval**
+  - Hybrid search (BM25 + semantic)
+  - Cross-encoder re-ranking
+  - Query expansion
+  
+- [ ] **Enhanced UX**
+  - Query history and favorites
+  - Export results to PDF/email
+  - Response style controls (concise/detailed)
+  
+- [ ] **Analytics**
+  - Usage dashboard
+  - Query analytics
+  - Performance monitoring
+  
+- [ ] **Integration**
+  - Web scraping for live documentation
+  - API endpoints for programmatic access
+  - Slack/Teams bot integration
+
 
 ---
 
 ## 👨‍💻 Author
 
-**Ramprashanth Gajarghat**  
+**Ram Prashanth Rao G**  
 Northeastern University | INFO 7390 - Art and Science of Data  
 📧 gajarghat.r@northeastern.edu  
 🔗 [GitHub](https://github.com/Ramprashanth17)
