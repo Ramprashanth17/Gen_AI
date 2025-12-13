@@ -1,0 +1,144 @@
+{
+  "sap": {
+    "results": [
+      {
+        "question": "What is SAP's policy on accepting gifts?",
+        "expected_doc": "Global_CoE_BizConduct.pdf",
+        "retrieved_docs": [
+          "Global_CoE_BizConduct.pdf",
+          "Global_CoE_BizConduct.pdf",
+          "Global_CoE_BizConduct.pdf",
+          "Global_CoE_BizConduct.pdf",
+          "SAP_Partner_CoC.pdf"
+        ],
+        "hit": true,
+        "top_similarity": 0.7865766286849976,
+        "response_time": 2.7350354194641113,
+        "answer_length": 871
+      },
+      {
+        "question": "What are the AI ethics principles at SAP?",
+        "expected_doc": "Global_AI_Ethics_Policy.pdf",
+        "retrieved_docs": [
+          "Global_AI_Ethics_Policy.pdf",
+          "Global_AI_Ethics_Policy.pdf",
+          "Global_AI_Ethics_Policy.pdf",
+          "Global_AI_Ethics_Policy.pdf",
+          "Global_AI_Ethics_Policy.pdf"
+        ],
+        "hit": true,
+        "top_similarity": 0.79207843542099,
+        "response_time": 7.169703960418701,
+        "answer_length": 1326
+      },
+      {
+        "question": "What is the AI Ethics Steering Committee?",
+        "expected_doc": "Global_AI_Ethics_Policy.pdf",
+        "retrieved_docs": [
+          "Global_AI_Ethics_Policy.pdf",
+          "Global_AI_Ethics_Policy.pdf",
+          "Global_AI_Ethics_Policy.pdf",
+          "Global_AI_Ethics_Policy.pdf",
+          "Global_CoE_BizConduct.pdf"
+        ],
+        "hit": true,
+        "top_similarity": 0.6554147601127625,
+        "response_time": 3.95432186126709,
+        "answer_length": 500
+      },
+      {
+        "question": "Can partners accept cash payments from customers?",
+        "expected_doc": "SAP_Partner_CoC.pdf",
+        "retrieved_docs": [
+          "salesforce_winter25_release_notes.pdf",
+          "salesforce_winter25_release_notes.pdf",
+          "SAP_Partner_CoC.pdf",
+          "salesforce_winter25_release_notes.pdf",
+          "salesforce_winter25_release_notes.pdf"
+        ],
+        "hit": true,
+        "top_similarity": 0.42191851139068604,
+        "response_time": 1.3112766742706299,
+        "answer_length": 56
+      },
+      {
+        "question": "What are SAP's transparency requirements for AI?",
+        "expected_doc": "Global_AI_Ethics_Policy.pdf",
+        "retrieved_docs": [
+          "Global_AI_Ethics_Policy.pdf",
+          "Global_AI_Ethics_Policy.pdf",
+          "Global_AI_Ethics_Policy.pdf",
+          "Global_AI_Ethics_Policy.pdf",
+          "Global_AI_Ethics_Policy.pdf"
+        ],
+        "hit": true,
+        "top_similarity": 0.7751805782318115,
+        "response_time": 4.958276748657227,
+        "answer_length": 1222
+      }
+    ],
+    "metrics": {
+      "total_queries": 5,
+      "retrieval_accuracy": 1.0,
+      "avg_top_similarity": 0.6862337827682495,
+      "avg_response_time": 4.025722932815552,
+      "avg_answer_length": 795.0
+    }
+  },
+  "salesforce": {
+    "results": [
+      {
+        "question": "What is Salesforce Apex?",
+        "expected_doc": "salesforce_apex_language_reference.pdf",
+        "retrieved_docs": [
+          "salesforce_apex_language_reference.pdf",
+          "salesforce_apex_language_reference.pdf",
+          "salesforce_apex_language_reference.pdf",
+          "salesforce_apex_language_reference.pdf",
+          "salesforce_apex_language_reference.pdf"
+        ],
+        "hit": true,
+        "top_similarity": 0.19635266065597534,
+        "response_time": 4.512436628341675,
+        "answer_length": 1234
+      },
+      {
+        "question": "How do SOQL queries work?",
+        "expected_doc": "salesforce_soql_sosl.pdf",
+        "retrieved_docs": [
+          "salesforce_soql_sosl.pdf",
+          "salesforce_soql_sosl.pdf",
+          "salesforce_apex_language_reference.pdf",
+          "salesforce_soql_sosl.pdf",
+          "salesforce_apex_language_reference.pdf"
+        ],
+        "hit": true,
+        "top_similarity": 0.12387049198150635,
+        "response_time": 5.716512441635132,
+        "answer_length": 1201
+      },
+      {
+        "question": "What are governor limits in Salesforce?",
+        "expected_doc": "salesforce_apex_language_reference.pdf",
+        "retrieved_docs": [
+          "salesforce_apex_language_reference.pdf",
+          "salesforce_apex_language_reference.pdf",
+          "salesforce_apex_language_reference.pdf",
+          "salesforce_apex_language_reference.pdf",
+          "salesforce_apex_language_reference.pdf"
+        ],
+        "hit": true,
+        "top_similarity": 0.4674797058105469,
+        "response_time": 1.690070629119873,
+        "answer_length": 1259
+      }
+    ],
+    "metrics": {
+      "total_queries": 3,
+      "retrieval_accuracy": 1.0,
+      "avg_top_similarity": 0.2625676194826762,
+      "avg_response_time": 3.97300656636556,
+      "avg_answer_length": 1231.3333333333333
+    }
+  }
+}
