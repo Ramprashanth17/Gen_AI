@@ -55,6 +55,31 @@ with st.sidebar:
 )
 
     selected_collection = COLLECTIONS[knowledge_base]["name"]
+
+    st.markdown("---")
+    st.markdown("### 💡 Example Questions")
+    
+    # Dynamic examples based on selected KB
+    if knowledge_base == "SAP":
+        examples = [
+            "What is SAP's policy on accepting gifts?",
+            "What are the AI ethics principles at SAP?",
+            "Who oversees AI ethics at SAP?"
+        ]
+    else:  # Salesforce
+        examples = [
+            "What is Salesforce Apex?",
+            "What are SOQL governor limits?",
+            "How do you handle DML in loops?"
+        ]
+    
+    for example in examples:
+        if st.button(f"💬 {example}", key=example, use_container_width=True):
+            st.session_state.selected_question = example
+            st.rerun()
+    
+    # st.markdown("---")
+    # st.markdown("### 📊 System Info")
     
     st.markdown("---")
     st.markdown("### 📊 System Info")
@@ -82,10 +107,20 @@ with st.sidebar:
 # Main interface
 st.markdown(f"### 💬 Ask a question about {knowledge_base} policies")
 
+# Use session state for selected question
+if 'selected_question' not in st.session_state:
+    st.session_state.selected_question = ""
+
 question = st.text_input(
     "Your question:",
-    placeholder=f"e.g., What is {knowledge_base}'s policy on gifts?" if knowledge_base == "SAP" else f"e.g., What are {knowledge_base} user permissions?"
+    value=st.session_state.selected_question,  # Populate from button!
+    placeholder=f"e.g., What is {knowledge_base}'s policy?"
 )
+
+# Clear after use
+if st.session_state.selected_question:
+    st.session_state.selected_question = ""
+
 
 if st.button("🔍 Search", type="primary"):
     if question:
