@@ -21,7 +21,6 @@ This project is a **comprehensive educational platform** that teaches you how to
 - 🎯 **Hands-On Learning** - Every concept includes runnable code and experiments
 - 🧪 **Practice Exercises** - Reinforce learning with real coding challenges
 - 🎥 **Video Walkthrough** - 10-minute show-and-tell demonstration
-- 💼 **Production-Ready** - Industry-standard techniques (recursive splitting, metadata handling)
 - 🚀 **Complete Demo** - Working RAG system with research papers in minutes
 
 ---
