@@ -19,7 +19,6 @@ st.set_page_config(page_title="Enterprise Knowledge Navigator", page_icon="🧠"
 def get_pipeline():
     pipeline = RAGPipeline()
     
-    # Index SAP if not exists
     try:
         sap_col = pipeline.vector_store.client.get_collection("sap_knowledge")
         if sap_col.count() == 0:
@@ -28,7 +27,6 @@ def get_pipeline():
         st.info("📦 Indexing SAP documents...")
         pipeline.index_documents("data/documents/sap", "sap_knowledge")
     
-    # Index Salesforce if not exists
     try:
         sf_col = pipeline.vector_store.client.get_collection("salesforce_knowledge")
         if sf_col.count() == 0:
@@ -39,91 +37,82 @@ def get_pipeline():
     
     return pipeline
 
-# Header
 st.title("🧠 Enterprise Knowledge Navigator")
 st.markdown("Multi-tenant RAG for Enterprise Documentation")
 st.markdown("---")
 
-# Sidebar - Knowledge Base Selector
+# Initialize session state
+if 'selected_question' not in st.session_state:
+    st.session_state.selected_question = ""
+
+# Sidebar
 with st.sidebar:
     st.header("⚙️ Settings")
     
     knowledge_base = st.selectbox(
-    "📚 Knowledge Base:",
-    list(COLLECTIONS.keys()),  # Dynamic from config!
-    index=list(COLLECTIONS.keys()).index(DEFAULT_COLLECTION)
-)
-
+        "📚 Knowledge Base:",
+        list(COLLECTIONS.keys()),
+        index=list(COLLECTIONS.keys()).index(DEFAULT_COLLECTION),
+        key="kb_selector"
+    )
+    
     selected_collection = COLLECTIONS[knowledge_base]["name"]
-
+    
     st.markdown("---")
     st.markdown("### 💡 Example Questions")
     
-    # Dynamic examples based on selected KB
     if knowledge_base == "SAP":
         examples = [
             "What is SAP's policy on accepting gifts?",
             "What are the AI ethics principles at SAP?",
             "Who oversees AI ethics at SAP?"
         ]
-    else:  # Salesforce
+    else:
         examples = [
             "What is Salesforce Apex?",
             "What are SOQL governor limits?",
             "How do you handle DML in loops?"
         ]
     
-    for example in examples:
-        if st.button(f"💬 {example}", key=example, use_container_width=True):
+    for i, example in enumerate(examples):
+        if st.button(example, key=f"example_{i}", use_container_width=True):
             st.session_state.selected_question = example
-            st.rerun()
-    
-    # st.markdown("---")
-    # st.markdown("### 📊 System Info")
     
     st.markdown("---")
     st.markdown("### 📊 System Info")
+    
     pipeline = get_pipeline()
     try:
         col = pipeline.vector_store.client.get_collection(selected_collection)
         st.metric("Chunks Indexed", col.count())
-
-        # Show documents in this collection
+        
         st.markdown("### 📄 Documents")
         docs_in_collection = set()
-
-        # Get unique sources from collection
-        results = col.get(limit=1000)  # Get metadata from collection
+        results = col.get(limit=1000)
         for metadata in results['metadatas']:
             docs_in_collection.add(metadata['source'])
         
-        # Display as list
         for doc in sorted(docs_in_collection):
             st.caption(f"📄 {doc}")
-            
     except Exception as e:
         st.error(f"Error: {str(e)}")
 
 # Main interface
-st.markdown(f"### 💬 Ask a question about {knowledge_base} policies")
-
-# Use session state for selected question
-if 'selected_question' not in st.session_state:
-    st.session_state.selected_question = ""
+st.markdown(f"### 💬 Ask a question about {knowledge_base}")
 
 question = st.text_input(
     "Your question:",
-    value=st.session_state.selected_question,  # Populate from button!
-    placeholder=f"e.g., What is {knowledge_base}'s policy?"
+    value=st.session_state.selected_question,
+    placeholder=f"e.g., What is {knowledge_base}'s policy on gifts?",
+    key="question_input"
 )
-
-# Clear after use
-if st.session_state.selected_question:
-    st.session_state.selected_question = ""
-
 
 if st.button("🔍 Search", type="primary"):
     if question:
+        # Clear the session state AFTER we have the question
+        if st.session_state.selected_question:
+            st.session_state.selected_question = ""
+        
         with st.spinner(f"Searching {knowledge_base} knowledge base..."):
             result = pipeline.query(question, collection_name=selected_collection, top_k=3)
             
@@ -133,6 +122,8 @@ if st.button("🔍 Search", type="primary"):
             st.markdown("### 📚 Sources")
             for s in result['sources']:
                 st.caption(f"📄 {s['source']} | Chunk {s['chunk_id']+1} | Similarity: {s['similarity']:.1%}")
+    else:
+        st.warning("Please enter a question")
 
 st.markdown("---")
 st.caption(f"Currently searching: **{knowledge_base}** knowledge base")
