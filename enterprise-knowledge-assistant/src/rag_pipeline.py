@@ -60,7 +60,7 @@ class RAGPipeline:
         
         # Retrieve relevant chunks
         results = self.vector_store.query(
-            self.collection_name,
+            collection_name,
             query_embedding.tolist(),
             n_results=top_k
         )

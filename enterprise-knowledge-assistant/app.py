@@ -62,8 +62,22 @@ with st.sidebar:
     try:
         col = pipeline.vector_store.client.get_collection(selected_collection)
         st.metric("Chunks Indexed", col.count())
-    except:
-        st.metric("Chunks Indexed", "N/A")
+
+        # Show documents in this collection
+        st.markdown("### 📄 Documents")
+        docs_in_collection = set()
+
+        # Get unique sources from collection
+        results = col.get(limit=1000)  # Get metadata from collection
+        for metadata in results['metadatas']:
+            docs_in_collection.add(metadata['source'])
+        
+        # Display as list
+        for doc in sorted(docs_in_collection):
+            st.caption(f"📄 {doc}")
+            
+    except Exception as e:
+        st.error(f"Error: {str(e)}")
 
 # Main interface
 st.markdown(f"### 💬 Ask a question about {knowledge_base} policies")
