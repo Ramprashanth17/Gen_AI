@@ -92,7 +92,7 @@ with st.sidebar:
         st.caption(f"Collection: {selected_collection}")  # Show which collection!
         
         #col = pipeline.vector_store.client.get_collection(selected_collection)
-        st.metric("Chunks Indexed", col.count())
+        #st.metric("Chunks Indexed", count)
         
         st.markdown("### 📄 Documents")
         docs = set()
