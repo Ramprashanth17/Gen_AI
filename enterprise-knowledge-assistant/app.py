@@ -84,19 +84,29 @@ with st.sidebar:
     st.markdown("### 📊 System Info")
     
     try:
-        col = pipeline.vector_store.client.get_collection(selected_collection)
+        # Use selected_collection (not a cached variable!)
+        current_collection = pipeline.vector_store.client.get_collection(selected_collection)
+        count = current_collection.count()
+        
+        st.metric("Chunks Indexed", count)
+        st.caption(f"Collection: {selected_collection}")  # Show which collection!
+        
+        #col = pipeline.vector_store.client.get_collection(selected_collection)
         st.metric("Chunks Indexed", col.count())
         
         st.markdown("### 📄 Documents")
         docs = set()
-        results = col.get(limit=2000)
-        for meta in results['metadatas']:
-            docs.add(meta['source'])
+        results = current_collection.get(limit=2000)
+        if results and results['metadatas']:
+            for meta in results['metadatas']:
+                docs.add(meta['source'])
         
-        for doc in sorted(docs):
-            st.caption(f"📄 {doc}")
+            for doc in sorted(docs):
+                st.caption(f"📄 {doc}")
+        else:
+            st.caption("No documents found")
     except Exception as e:
-        st.error(str(e))
+        st.error(f"Error loading collection: {str(e)}")
 
 # Main
 st.markdown(f"### 💬 Ask about {knowledge_base}")
