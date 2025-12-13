@@ -9,6 +9,7 @@ sys.path.insert(0, str(APP_DIR))
 
 from src.rag_pipeline import RAGPipeline
 from dotenv import load_dotenv
+from src.config import COLLECTIONS, DEFAULT_COLLECTION  
 
 load_dotenv()
 
@@ -48,17 +49,12 @@ with st.sidebar:
     st.header("⚙️ Settings")
     
     knowledge_base = st.selectbox(
-        "📚 Knowledge Base:",
-        ["SAP", "Salesforce"],
-        help="Select which company's documentation to search"
-    )
-    
-    # Map to collection names
-    collection_map = {
-        "SAP": "sap_knowledge",
-        "Salesforce": "salesforce_knowledge"
-    }
-    selected_collection = collection_map[knowledge_base]
+    "📚 Knowledge Base:",
+    list(COLLECTIONS.keys()),  # Dynamic from config!
+    index=list(COLLECTIONS.keys()).index(DEFAULT_COLLECTION)
+)
+
+    selected_collection = COLLECTIONS[knowledge_base]["name"]
     
     st.markdown("---")
     st.markdown("### 📊 System Info")

@@ -14,8 +14,28 @@ BATCH_SIZE = 32
 CHUNK_SIZE = 512
 CHUNK_OVERLAP = 128
 
-# Vector Database
-COLLECTION_NAME = "sap_knowledge"
+# Collection configurations (for multi-tenant)
+COLLECTIONS = {
+    "SAP": {
+        "name": "sap_knowledge",
+        "folder": "data/documents/sap",
+        "display_name": "SAP"
+    },
+    "Salesforce": {
+        "name": "salesforce_knowledge",
+        "folder": "data/documents/salesforce",
+        "display_name": "Salesforce"
+    }
+}
+
+# Default collection
+DEFAULT_COLLECTION = "SAP"
+
+# # Vector Database
+# COLLECTION_NAME = "sap_knowledge"
+COLLECTION_NAME = COLLECTIONS[DEFAULT_COLLECTION]["name"]
+
+
 
 #LLM Settings
 LLM_MODEL = "gpt-4o-mini"
