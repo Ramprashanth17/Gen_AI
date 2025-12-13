@@ -3,8 +3,8 @@ from pathlib import Path
 import os
 import sys
 
-APP_DIR = Path(__file__).parent
-os.chdir(APP_DIR)
+APP_DIR = Path(__file__).parent.resolve()
+##os.chdir(APP_DIR)##
 sys.path.insert(0, str(APP_DIR))
 
 from src.rag_pipeline import RAGPipeline
@@ -27,7 +27,7 @@ def get_pipeline():
     
     for kb_name, kb_config in COLLECTIONS.items():
         collection_name = kb_config["name"]
-        folder_path = kb_config["folder"]
+        folder_path = str(APP_DIR / kb_config["folder"])     ##kb_config["folder"]
         
         try:
             col = pipeline.vector_store.client.get_collection(collection_name)
@@ -136,4 +136,5 @@ if st.button("🔍 Search", type="primary") or (question and question != st.sess
         st.warning("Please enter a question")
 
 st.markdown("---")
+
 st.caption(f"Searching: **{knowledge_base}** knowledge base")
