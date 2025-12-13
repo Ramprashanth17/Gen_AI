@@ -14,8 +14,10 @@ class RAGPipeline:
         self.openai_client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
         self.collection_name = COLLECTION_NAME
     
-    def index_documents(self, folder_path):
+    def index_documents(self, folder_path, collection_name=None):
         """Load, chunk, embed, and store all documents"""
+        if collection_name is None:
+            collection_name = self.collection_name
         print(f"Loading documents from {folder_path}...")
         documents = load_all_documents(folder_path)
         
@@ -39,7 +41,7 @@ class RAGPipeline:
         
         print(f"Storing in vector database...")
         count = self.vector_store.add_documents(
-            self.collection_name,
+            collection_name,
             all_chunks,
             embeddings.tolist(),
             chunk_metadata
@@ -48,8 +50,11 @@ class RAGPipeline:
         print(f"✅ Indexed {count} chunks!")
         return count
     
-    def query(self, question, top_k=TOP_K_RESULTS):
+    def query(self, question, collection_name=None, top_k=TOP_K_RESULTS):
         """Query the knowledge base and generate answer"""
+        # Use provided collection or default
+        if collection_name is None:
+            collection_name = self.collection_name
         # Embed query
         query_embedding = self.embedder.model.encode([question])[0]
         
