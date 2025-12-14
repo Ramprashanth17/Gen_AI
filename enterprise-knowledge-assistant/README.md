@@ -2,7 +2,7 @@
 
 AI-powered knowledge assistant using Retrieval-Augmented Generation (RAG) to reduce enterprise documentation search time from 15 minutes to 30 seconds (95% reduction).
 
-🔗 **[Live Demo](YOUR_STREAMLIT_URL_HERE)**
+🔗 **[Live Demo](https://cmgoctrhhnb5wenrvxwc78.streamlit.app/)**
 
 ---
 
@@ -148,7 +148,7 @@ streamlit run app.py
 
 ## 🎥 Demo Video
 
-**[Link to your demo video - add tomorrow]**
+**[https://vimeo.com/1146280122?share=copy&fl=sv&fe=ci#t=0]**
 
 ---
 
